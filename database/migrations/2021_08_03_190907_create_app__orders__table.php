@@ -13,8 +13,18 @@ class CreateAppOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('app__orders_', function (Blueprint $table) {
+        Schema::connection(env('DB_CONNECTION_APP'))->create('orders', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('clients_id')->constrained('app.users');
+            $table->foreignId('driver_id')->constrained('app.drivers');
+            $table->text('calification')->comment('Calificación sobre 5 del pedido');
+            $table->double('delivery_cost', 8, 2)->comment('Costo de la entrega');
+            $table->date('delivery_date')->comment('Fecha del pedido');
+            $table->enum('state', ['pendiente', 'aceptado', 'viaje', 'entregado'])->comment('Estado del pedido');
+            $table->enum('payment_method', ['efectivo', 'tarjeta', 'cupon'])->comment('Método de pago del pedido');
+            $table->time('wait_time')->comment('Tiempo de espera desde la aceptación');
+            $table->double('total_price')->comment('Precio total del pedido');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -26,6 +36,6 @@ class CreateAppOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('app__orders_');
+        Schema::connection(env('DB_CONNECTION_APP'))->dropIfExists('orders');
     }
 }

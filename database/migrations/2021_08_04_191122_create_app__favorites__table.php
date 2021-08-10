@@ -13,8 +13,11 @@ class CreateAppFavoritesTable extends Migration
      */
     public function up()
     {
-        Schema::create('app__favorites_', function (Blueprint $table) {
+        Schema::connection(env('DB_CONNECTION_APP'))->create('favorites', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('product_id')->constrained('app.products');
+            $table->foreignId('client_id')->constrained('app.clients');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -26,6 +29,7 @@ class CreateAppFavoritesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('app__favorites_');
+        Schema::connection(env('DB_CONNECTION_APP'))->dropIfExists('favorites');
     }
+
 }

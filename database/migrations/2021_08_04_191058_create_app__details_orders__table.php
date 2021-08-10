@@ -13,8 +13,11 @@ class CreateAppDetailsOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('app__details_orders_', function (Blueprint $table) {
+        Schema::connection(env('DB_CONNECTION_APP'))->create('details_orders', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('product_id')->constrained('app.products');
+            $table->foreignId('order_id')->constrained('app.orders');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreateAppDetailsOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('app__details_orders_');
+        Schema::connection(env('DB_CONNECTION_APP'))->dropIfExists('details_orders');
     }
 }

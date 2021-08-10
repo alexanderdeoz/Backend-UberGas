@@ -14,12 +14,12 @@ class Product extends Model
         'name',
         'price',
         'img_url',
-        'like_counter',
+        
     ];
 
     public function dealers()
     {
-        return $this->belongsTo(Enterprise::class);
+        return $this->belongsTo(Dealer::class);
     }
     public function orders()
     {

@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Client;
 use App\Models\Order;
-use App\Models\UserU;
 use App\Models\Driver;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -23,7 +23,7 @@ class OrderFactory extends Factory
      */
     public function definition()
     {
-            $usersU = UserU::get();
+            $usersU = Client::get();
             $drivers = Driver::get();
     
             return [

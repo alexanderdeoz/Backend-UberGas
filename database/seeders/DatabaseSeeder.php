@@ -14,13 +14,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        $this->call([
-            UserUSeeder::class,
-            DriverSeeder::class,
-            OrderSeeder::class,
-            DealerSeeder::class,
-            ProductSeeder::class,
-            FavoriteSeeder::class
-        ]);
+        $this->call([AppSeeder::class]);
     }
 }

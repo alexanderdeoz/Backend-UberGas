@@ -13,8 +13,14 @@ class CreateAppProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('app__products_', function (Blueprint $table) {
+        Schema::connection(env('DB_CONNECTION_APP'))->create('products', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('dealer_id')->constrained('app.dealers');
+            $table->text('name')->comment('Nombre del producto');
+            $table->float('price')->comment('Precio del producto');
+            $table->text('description')->comment('Descripción del producto');
+            $table->text('img_url')->comment('imagén del producto');
+             $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -26,6 +32,6 @@ class CreateAppProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('app__products_');
+        Schema::connection(env('DB_CONNECTION_APP'))->dropIfExists('products');
     }
 }

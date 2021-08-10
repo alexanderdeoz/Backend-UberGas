@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserU extends Model
+class Client extends Model
 {
-    protected $table = 'app.users';
+    protected $table = 'app.clients';
 	protected $fillable = [
 		'address',
 		'payment_method'
@@ -22,7 +22,7 @@ class UserU extends Model
 		return $this->belongsToMany(Product::class, 'app.favorites', 'product_id', 'user_id')
 			->withTimestamps();
 	}
-	public function user()
+	public function users()
 	{
 		return $this->belongsTo(User::class);
 	}

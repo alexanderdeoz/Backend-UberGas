@@ -18,8 +18,11 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'phone',
         'email',
         'password',
+        'direction',
+        'genred',
     ];
 
     /**
@@ -38,6 +41,16 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'email_verified_at' => 'datetime: Y-m-d',
     ];
+
+    function clients()
+    {
+        return $this->belongsTo(Client::class);
+    }
+    function drivers()
+    {
+        return $this->belongsTo(Driver::class);
+    }
+    
 }
