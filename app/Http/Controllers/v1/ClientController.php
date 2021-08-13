@@ -12,11 +12,11 @@ use App\Models\Client;
 
 class ClientController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+  {
+    $this->middleware('role:client');
+  }
+   
     public function index()
     {
         $clients = Client::get();

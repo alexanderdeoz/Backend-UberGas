@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Http\Requests\V1\Orders\DestroyOrderRequest;
+use App\Http\Requests\V1\Orders\StoreOrderRequest;
+use App\Http\Requests\V1\Orders\UpdateOrderRequest;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -34,7 +37,7 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreOrderRequest $request)
     {
         $orders = new Order();
         $orders->calification= $request->calification;
@@ -87,7 +90,7 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $orders)
+    public function update(UpdateOrderRequest $request, $orders)
     {
         $orders = Order::find($orders);
         $orders->calification= $request->calification;

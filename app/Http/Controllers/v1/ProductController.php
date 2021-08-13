@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\V1\Dealers\DestroyDealerRequest;
+use App\Http\Requests\V1\Products\StoreProductRequest;
+use App\Http\Requests\V1\Products\UpdateProductRequest;
+use App\Models\Dealer;
 use App\Models\Product;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         $products = Product::get();
@@ -34,7 +34,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
         $products = new Product();
         $products->name= $request->name;
@@ -84,7 +84,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $products)
+    public function update(UpdateProductRequest $request, $products)
     {
         $products = Product::find($products);
         $products->name= $request->name;
@@ -126,5 +126,22 @@ class ProductController extends Controller
             ],
             201
         );
+    }
+
+    public function destroys(DestroyDealerRequest $request)
+    {
+      Dealer::destroy($request->input('ids'));
+  
+      return response()->json(
+        [
+          'data' => null,
+          'msg' => [
+            'summary' => 'distribuidora Eliminada/s',
+            'detail' => '',
+            'code' => '201'
+          ]
+        ],
+        201
+      );
     }
 }

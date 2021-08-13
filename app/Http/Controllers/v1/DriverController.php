@@ -11,11 +11,11 @@ use Illuminate\Support\Facades\DB;
 
 class DriverController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+      $this->middleware('role:driver');
+    }
+    
     public function index()
     {
         $drivers =Driver::get();

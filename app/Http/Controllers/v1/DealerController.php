@@ -4,18 +4,18 @@ namespace App\Http\Controllers;
 use App\Exceptions\DriverNotFound;
 use App\Models\Dealer;
 use Illuminate\Http\Request;
+use App\Http\Requests\V1\Dealers\DestroyDealerRequest;
+use App\Http\Requests\V1\Dealers\StoreDealerRequest;
+use App\Http\Requests\V1\Dealers\UpdateDealerRequest;
 
 class DealerController extends Controller
 {
     public function __construct()
   {
     $this->middleware('role:driver');
+    $this->middleware('permission:view-data')->only(['index']);
+        
   }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $dealers = Dealer::get();
@@ -38,7 +38,7 @@ class DealerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreDealerRequest $request)
     {
         $dealers = new Dealer();
         $dealers->name= $request->name;
@@ -92,7 +92,7 @@ class DealerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $dealers)
+    public function update(UpdateDealerRequest $request, $dealers)
     {
         $dealers = Dealer::find();
         $dealers->name= $request->name;

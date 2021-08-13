@@ -4,16 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Travel;
 use Illuminate\Http\Request;
+use App\Http\Requests\V1\Travels\DestroyTravelClientRequest;
+use App\Http\Requests\V1\Travels\StoreTravelRequest;
+use App\Http\Requests\V1\Travels\UpdateTravelRequest;
 use Illuminate\Support\Facades\DB;
 
 
 class TravelController extends Controller
 {
-    /**
-         * Display a listing of the resource.
-         *
-         * @return \Illuminate\Http\Response
-         */
+    
         public function index()
         {
             $travel = Travel::get();
@@ -30,7 +29,7 @@ class TravelController extends Controller
          * @param  \Illuminate\Http\Request  $request
          * @return \Illuminate\Http\Response
          */
-        public function store(Request $request)
+        public function store(StoreTravelRequest $request)
         {
             $travel = new Travel();
             $travel->starting= $request->starting;
@@ -71,7 +70,7 @@ class TravelController extends Controller
          * @param  int  $id
          * @return \Illuminate\Http\Response
          */
-        public function update(Request $request, $travel)
+        public function update(UpdateTravelRequest $request, $travel)
         {
             $travel = Travel::find($travel);
             $travel->starting= $request->starting;
