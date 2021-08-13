@@ -26,7 +26,6 @@ class UpdateUserRequest extends FormRequest
         return [
             'username' => ['required', 'unique:pgsql-authentication.users,username', 'max:50'],
             'name' => ['required', 'min:2', 'max:100'],
-            'lastname' => ['required', 'min:2', 'max:50'],
             'email' => ['required', 'max:50'],
         ];
     }
@@ -35,8 +34,7 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'username' => 'nombre de usuario',
-            'name' => 'nombre',
-            'lastname' => 'apellido',
+            'name' => 'nombre y apellido',
             'email' => 'correo electrónico'
         ];
     }

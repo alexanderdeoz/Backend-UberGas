@@ -119,4 +119,22 @@ class ClientController extends Controller
                 'code' => '201']], 201
             );
     }
+
+    public function updateState()
+    {
+        $clients = 'client';
+        return response()->json(
+            [
+                'data' => $clients,
+                'msg' => [
+                    'summary' => 'actualizacion correcta',
+                    'detail' => 'el estado del cliente se actualizo ',
+                    'code' => '201'
+                ]
+
+            ],
+            201
+        );
+    }
 }
+
