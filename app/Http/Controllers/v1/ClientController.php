@@ -19,18 +19,7 @@ class ClientController extends Controller
    
     public function index()
     {
-        $clients = Client::get();
-        return response()->json(
-            [
-                'data' => $clients,
-                'msg' => [
-                    'sumary' => 'consulta correcta',
-                    'detail' => 'la consulta esta correcta',
-                    'code' => '201'
-                ]
-            ],
-            201
-        );
+        return new ClientCollection(Client::paginate());
     }
 
     /**
@@ -43,7 +32,7 @@ class ClientController extends Controller
     {
         $clients = new Client();
         $clients->address= $request->address;
-        $clients->clients_method= $request->clients_method;
+        $clients->payment= $request->payment;
         $clients->save();
         
         return response()->json(
@@ -92,7 +81,7 @@ class ClientController extends Controller
     {
         $clients = Client::find($clients);
         $clients->address= $request->address;
-        $clients->clients_method= $request->clients_method;
+        $clients->payment= $request->payment;
         $clients->save();
             return response()->json(
                [  'data' => null,

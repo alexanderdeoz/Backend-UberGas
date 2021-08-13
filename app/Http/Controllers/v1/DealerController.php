@@ -46,9 +46,8 @@ class DealerController extends Controller
         $dealers->adress= $request->adress;
         $dealers->country= $request->country;
         $dealers->city= $request->city;
-        $dealers->img_url= $request->img_url;
-        $dealers->time_open= $request->time_open;
-        $dealers->time_close= $request->time_close;
+        $dealers->timeOpen= $request->timeOpen;
+        $dealers->timeClose= $request->timeClose;
         $dealers->save();
         return response()->json(
             [
@@ -100,9 +99,8 @@ class DealerController extends Controller
         $dealers->adress= $request->adress;
         $dealers->country= $request->country;
         $dealers->city= $request->city;
-        $dealers->img_url= $request->img_url;
-        $dealers->time_open= $request->time_open;
-        $dealers->time_close= $request->time_close;
+        $dealers->timeOpen= $request->timeOpen;
+        $dealers->timeClose= $request->timeClose;
         $dealers->save();
         return response()->json(
             [

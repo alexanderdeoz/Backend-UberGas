@@ -20,9 +20,8 @@ class CreateAppDealersTable extends Migration
             $table->integer('calification')->comment('Calificación de la distribuidora');
             $table->text('country')->comment('Pais de la distribuidora');
             $table->text('city')->comment('Ciudad de la distribuidora');
-            $table->text('img_url')->comment('url/path de la imagen de la distribuidora');
-            $table->text('time_open')->comment('Hora de apertura');
-            $table->text('time_close')->comment('Hora de cierre');
+              $table->text('timeOpen')->comment('Hora de apertura');
+            $table->text('timeClose')->comment('Hora de cierre');
             
             $table->softDeletes();
             $table->timestamps();

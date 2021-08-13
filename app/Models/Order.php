@@ -13,12 +13,12 @@ class Order extends Model
     protected $table = 'app.orders';
     protected $fillable = [
         'calification',
-        'delivery_cost',
-        'delivery_date',
-        'method_payment',
+        'deliveryCost',
+        'deliveryDate',
+        'payment',
         'state',
-        'total_price',
-        'wait_time',
+        'totalPrice',
+        'waitTime',
         
     ];
 

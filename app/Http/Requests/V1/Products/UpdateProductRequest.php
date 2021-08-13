@@ -14,25 +14,19 @@ class UpdateProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'calification' => ['required', 'max:20'],
-            'delivery_cost' => ['required'],
-            'delivery_date' => ['required'],
-            'state' => ['required'],
-            'payment_method' => ['required'],
-            'wait_time' => ['required'],
-            'total_price' => ['required']
+            'name' => ['required', 'max:20'],
+            'description' => ['required', 'max: 50'],
+            'price' => ['required'],
+            'img' => ['required','max:30'],
         ];
     }
     public function attributes()
     {
         return [
-            'calification' => 'Calificación',
-            'delivery_cost' => 'Costo de la entrega',
-            'delivery_date' => 'Fecha de entrega',
-            'state' => 'Estado',
-            'payment_method' => 'Método de pago',
-            'wait_time' => 'Tiempo de espera',
-            'total_price' => 'Precio total',
+            'name' => 'Nombre del producto',
+            'description' => 'Descripcion del producto',
+            'price' => 'Precio del producto',
+            'img' => ' imagen del producto',
         ];
     }
 }

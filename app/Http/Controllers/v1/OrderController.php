@@ -41,12 +41,12 @@ class OrderController extends Controller
     {
         $orders = new Order();
         $orders->calification= $request->calification;
-        $orders->delivery_cost= $request->delivery_cost;
-        $orders->delivery_date= $request->delivery_date;
-        $orders->method_payment= $request->method_payment;
+        $orders->deliveryCost= $request->deliveryCost;
+        $orders->deliveryDate= $request->deliveryDate;
+        $orders->payment= $request->payment;
         $orders->state= $request->state;
-        $orders->total_price= $request->total_price;
-        $orders->wait_time= $request->wait_time;
+        $orders->totalPrice= $request->totalPrice;
+        $orders->waiTime= $request->waitTime;
         $orders->save();
         return response()->json(
             [
@@ -94,12 +94,12 @@ class OrderController extends Controller
     {
         $orders = Order::find($orders);
         $orders->calification= $request->calification;
-        $orders->delivery_cost= $request->delivery_cost;
-        $orders->delivery_date= $request->delivery_date;
-        $orders->method_payment= $request->method_payment;
+        $orders->deliveryCost= $request->deliveryCost;
+        $orders->deliveryDate= $request->deliveryDate;
+        $orders->payment= $request->payment;
         $orders->state= $request->state;
-        $orders->total_price= $request->total_price;
-        $orders->wait_time= $request->wait_time;
+        $orders->totalPrice= $request->totalPrice;
+        $orders->waiTime= $request->waitTime;
         $orders->save();
         return response()->json(
             [

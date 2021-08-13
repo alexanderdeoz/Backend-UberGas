@@ -30,9 +30,8 @@ class StoreDealerRequest extends FormRequest
             'country' => ['required', 'max:30'], 
             'city' => ['required'],
             'phone' => ['required', 'max:15'],
-            'img_url'=>['required', 'max30'],
-            'time_close'=>['required'],
-            'time_open'=> ['required'],
+            'timeClose'=>['required'],
+            'timeOpen'=> ['required'],
         ];
     }
     public function attributes()
@@ -44,9 +43,8 @@ class StoreDealerRequest extends FormRequest
             'country' => 'Pais', 
             'city' => 'Ciudad',
             'phone' => 'Telefono',
-            'img_url'=>'URL de imagen',            
-            'time_close'=>'Hora de cierre',
-            'time_open'=> 'Hora de apertura',
+            'timeClose'=>'Hora de cierre',
+            'timeOpen'=> 'Hora de apertura',
         ];
     }
 }

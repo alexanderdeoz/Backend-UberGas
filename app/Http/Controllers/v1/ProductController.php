@@ -40,7 +40,7 @@ class ProductController extends Controller
         $products->name= $request->name;
         $products->description= $request->description;
         $products->price= $request->price;
-        $products->img_url= $request->img_url;
+        $products->img= $request->img;
         $products->save();
         return response()->json(
             [
@@ -90,7 +90,7 @@ class ProductController extends Controller
         $products->name= $request->name;
         $products->description= $request->description;
         $products->price= $request->price;
-        $products->img_url= $request->img_url;
+        $products->img= $request->img;
         $products->save();
         return response()->json(
             [

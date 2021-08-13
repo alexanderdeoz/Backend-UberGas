@@ -15,24 +15,24 @@ class StoreOrderRequest extends FormRequest
     {
         return [
             'calification' => ['required', 'max:20'],
-            'delivery_cost' => ['required'],
-            'delivery_date' => ['required'],
+            'deliveryCost' => ['required'],
+            'deliveryDate' => ['required'],
             'state' => ['required'],
-            'payment_method' => ['required'],
-            'wait_time' => ['required'],
-            'total_price' => ['required']
+            'payment' => ['required'],
+            'waitTime' => ['required'],
+            'totalPrice' => ['required']
         ];
     }
     public function attributes()
     {
         return [
             'calification' => 'Calificación',
-            'delivery_cost' => 'Costo de la entrega',
-            'delivery_date' => 'Fecha de entrega',
+            'deliveryCost' => 'Costo de la entrega',
+            'deliveryDate' => 'Fecha de entrega',
             'state' => 'Estado',
-            'payment_method' => 'Método de pago',
-            'wait_time' => 'Tiempo de espera',
-            'total_price' => 'Precio total',
+            'payment' => 'Pago',
+            'waitTime' => 'Tiempo de espera',
+            'totalPrice' => 'Precio total',
         ];
     }
 }

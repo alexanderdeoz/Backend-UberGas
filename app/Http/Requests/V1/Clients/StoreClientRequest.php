@@ -25,14 +25,14 @@ class StoreClientRequest extends FormRequest
     {
         return [
             'address' => ['required', 'max:500'],
-            'payment_method' => ['required', 'max:100']
+            'payment' => ['required', 'max:100']
         ];
     }
     public function attributes()
     {
         return [
             'address' => 'Dirección',
-            'payment_method' => 'Método de pago'
+            'payment' => 'Método de pago'
         ];
     }
 }

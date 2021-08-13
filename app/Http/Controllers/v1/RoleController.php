@@ -33,10 +33,10 @@ class RoleController extends Controller
          */
         public function store(Request $request)
         {
-            $role = new Role();
-            $role->user= $request->user;
-            $role->driver= $request->driver;
-            $role->save();
+            $roles = new Role();
+            $roles->name= $request->name;
+            
+            $roles->save();
             
             return response()->json(
                 ['data'=> null,
@@ -53,11 +53,11 @@ class RoleController extends Controller
          * @param  int  $id
          * @return \Illuminate\Http\Response
          */
-        public function show($role)
+        public function show($roles)
         {
-            $role = DB::select('select * from app.roles where id = ?',[$role]);
+            $roles = DB::select('select * from app.roles where id = ?',[$roles]);
             return response()->json(
-               ['data'=> $role,
+               ['data'=> $roles,
                'msg'=>['sumary'=> 'consulta correcta',
                'detail'=>'la consulta esta correcta', 
                'code'=>'200']], 200
@@ -71,12 +71,11 @@ class RoleController extends Controller
          * @param  int  $id
          * @return \Illuminate\Http\Response
          */
-        public function update(Request $request, $role)
+        public function update(Request $request, $roles)
         {
-            $driver = Role::find($role);
-            $role->user= $request->user;
-            $role->driver= $request->driver;
-            $role->save();
+            $roles = Role::find($roles);
+            $roles->name= $request->name;
+            $roles->save();
             
             return response()->json(
                [  'data' => null,
@@ -93,10 +92,10 @@ class RoleController extends Controller
          * @param  int  $id
          * @return \Illuminate\Http\Response
          */
-        public function destroy($role)
+        public function destroy($roles)
         {
-            $role = Role::find($role);
-            $role->delete();
+            $roles = Role::find($roles);
+            $roles->delete();
             return response()->json(
                 ['data'=> null,
                 'msg' => [

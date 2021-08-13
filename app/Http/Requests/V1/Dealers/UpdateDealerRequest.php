@@ -25,24 +25,29 @@ class UpdateDealerRequest extends FormRequest
     {
         return [
             'name'=> ['required', 'max:20'],
-            'email' => ['required', 'max:100'],
-            'phone' => ['required', 'max:15'],
-            'description' => ['required', 'max:50'], 
+            'address' => ['required', 'max:500'],
             'calification' => ['required', 'max:10'],
-           'placa'=>['required', 'max:10'],
-            'vehicle'=>['required','max:20'],
+            'country' => ['required', 'max:40'], 
+            'city' => ['required', 'max:40'],
+            'img'=>['required', 'max30'],
+            'phone' => ['required', 'max:15'],
+            'timeClose'=>['required'],
+            'timeOpen'=> ['required'],
         ];
     }
     public function attributes()
     {
         return [
             'name'=> 'Nombre',
-            'email' => 'correo electronico',
+            'adress' => 'Direccion',
+            'calification' => 'Calificacion',
+            'country' => 'Pais', 
+            'city' => 'Ciudad',
+            'img'=>' imagen',            
             'phone' => 'Telefono',
-            'description' => 'descripcion', 
-            'calification' => 'calificacion',
-            'placa' => 'placa ',
-            'vehicle'=>'vehiculo', 
+            'timeClose'=>'Hora de cierre',
+            'timeOpen'=> 'Hora de apertura',
+            
         ];
     }
 }

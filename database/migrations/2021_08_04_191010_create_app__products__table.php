@@ -19,7 +19,7 @@ class CreateAppProductsTable extends Migration
             $table->text('name')->comment('Nombre del producto');
             $table->float('price')->comment('Precio del producto');
             $table->text('description')->comment('Descripción del producto');
-            $table->text('img_url')->comment('imagén del producto');
+            $table->text('img')->comment('imagén del producto');
              $table->softDeletes();
             $table->timestamps();
         });

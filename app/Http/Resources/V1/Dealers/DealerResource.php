@@ -22,9 +22,8 @@ class DealerResource extends JsonResource
             'country' => $this->country,
             'city' => $this->city,
             'phone' => $this->phone,
-            'img_url' => $this->img_url,
-            'time_close' => $this->time_close,
-            'time_open' => $this->time_open,
+            'timeClose' => $this->time_close,
+            'timeOpen' => $this->time_open,
         ];
     }
 }

@@ -15,9 +15,9 @@ class TravelController extends Controller
     
         public function index()
         {
-            $travel = Travel::get();
+            $travels = Travel::get();
             return response()->json(
-               ['data'=> $travel,
+               ['data'=> $travels,
                'msg'=>['sumary'=> 'consulta correcta',
                'detail'=>'la consulta esta correcta', 
                'code'=>'201']], 201);
@@ -31,11 +31,11 @@ class TravelController extends Controller
          */
         public function store(StoreTravelRequest $request)
         {
-            $travel = new Travel();
-            $travel->starting= $request->starting;
-            $travel->arrival= $request->arrival;
-            $travel->value= $request->value;
-            $travel->save();
+            $travels = new Travel();
+            $travels->starting= $request->starting;
+            $travels->arrival= $request->arrival;
+            $travels->value= $request->value;
+            $travels->save();
             
             return response()->json(
                 ['data'=> null,
@@ -70,13 +70,13 @@ class TravelController extends Controller
          * @param  int  $id
          * @return \Illuminate\Http\Response
          */
-        public function update(UpdateTravelRequest $request, $travel)
+        public function update(UpdateTravelRequest $request, $travels)
         {
-            $travel = Travel::find($travel);
-            $travel->starting= $request->starting;
-            $travel->arrival= $request->arrival;
-            $travel->value= $request->value;
-            $travel->save();
+            $travels = Travel::find($travels);
+            $travels->starting= $request->starting;
+            $travels->arrival= $request->arrival;
+            $travels->value= $request->value;
+            $travels->save();
             return response()->json(
                [  'data' => null,
                'msg' => [
@@ -92,12 +92,12 @@ class TravelController extends Controller
          * @param  int  $id
          * @return \Illuminate\Http\Response
          */
-        public function destroy($travel)
+        public function destroy($travels)
         {
-            $travel = Travel::find($travel);
-            $travel->delete();
+            $travels = Travel::find($travels);
+            $travels->delete();
             return response()->json(
-                ['data'=> $travel,
+                ['data'=> $travels,
                 'msg' => [
                 'summary' => 'Eliminado correctamente',
                 'detail' => 'EL viaje se eliminó correctamente',
@@ -105,14 +105,4 @@ class TravelController extends Controller
              );
         }
     
-        public function updateState()
-        {
-            return response()->json(
-                ['data'=> null,
-                'msg' => [
-                'summary' => 'actualizado Correctamente',
-                'detail' => 'EL viaje se actualizo correctamente',
-                'code' => '201']], 201
-             );
-        }
 }

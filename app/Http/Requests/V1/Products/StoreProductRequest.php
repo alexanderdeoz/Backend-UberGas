@@ -17,7 +17,7 @@ class StoreProductRequest extends FormRequest
             'name' => ['required', 'max:20'],
             'description' => ['required', 'max: 50'],
             'price' => ['required'],
-            'img_url' => ['required','max:30'],
+            'img' => ['required','max:30'],
             
         ];
     }
@@ -27,7 +27,7 @@ class StoreProductRequest extends FormRequest
             'name' => 'Nombre del producto',
             'description' => 'Descripcion del producto',
             'price' => 'Precio del producto',
-            'img_url' => 'url de la imagen del producto',
+            'img' => ' imagen del producto',
             
         ];
     }

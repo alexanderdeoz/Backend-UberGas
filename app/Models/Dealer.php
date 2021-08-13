@@ -16,11 +16,10 @@ class Dealer extends Model
         'calification',
         'city',
         'country',
-        'img_url',
         'name',
         'phone',
-        'time_close',
-        'time_open',
+        'timeClose',
+        'timeOpen',
     ];
 
       public function products()

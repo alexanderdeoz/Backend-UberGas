@@ -23,7 +23,7 @@ class ClientFactory extends Factory
     {
         return [
             'address' => $this->faker->address(),
-            'payment_method' => $this->faker->randomElement(['efectivo', 'tarjeta', 'cupon']),
+            'payment' => $this->faker->randomElement(['efectivo', 'tarjeta', 'cupon']),
         ];
     }
 }

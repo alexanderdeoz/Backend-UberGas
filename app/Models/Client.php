@@ -13,7 +13,7 @@ class Client extends Model
     protected $table = 'app.clients';
 	protected $fillable = [
 		'address',
-		'payment_method'
+		'payment'
 	];
 
 	public function orders()

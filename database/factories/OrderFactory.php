@@ -30,12 +30,12 @@ class OrderFactory extends Factory
                 'user_id' => $this->faker->randomElement($usersU),
                 'driver_id' => $this->faker->randomElement($drivers),
                 'calification' => $this->faker->numerify('calificacion ###'),
-                'delivery_cost' => $this->faker->randomFloat(),
-                'delivery_date' => $this->faker->dateTimeThisCentury($max = 'now', $timezone = null),
+                'deliveryCost' => $this->faker->randomFloat(),
+                'deliveryDate' => $this->faker->dateTimeThisCentury($max = 'now', $timezone = null),
                 'state' => $this->faker->randomElement(['pendiente', 'aceptado', 'viaje', 'entregado']),
-                'method_payment' => $this->faker->randomElement(['efectivo', 'tarjeta', 'cupon']),
+                'payment' => $this->faker->randomElement(['efectivo', 'tarjeta', 'cupon']),
                 'wait_time' => $this->faker->time($format = 'H:i:s', $max = 'now'),
-                'total_price' => $this->faker->randomFloat(),
+                'totalPrice' => $this->faker->randomFloat(),
             ];
         
     }

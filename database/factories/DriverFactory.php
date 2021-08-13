@@ -22,7 +22,7 @@ class DriverFactory extends Factory
     public function definition()
     {
         return [
-            'calification' => $this->faker->numerify('calificacion ###'),
+            'calification' => $this->faker->numerify(),
             'description' => $this->faker->sentence(),
             'name'=> $this->faker->name(),
             'phone'=> $this->faker->phoneNumber(),

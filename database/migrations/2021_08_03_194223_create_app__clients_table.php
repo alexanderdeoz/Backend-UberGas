@@ -17,7 +17,7 @@ class CreateAppClientsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('app.users');
             $table->text('address')->comment('Dirección domiciliaria');
-            $table->enum('payment_method', ['efectivo', 'tarjeta', 'cupon'])->comment(' método de pago del cliente');
+            $table->enum('payment', ['efectivo', 'tarjeta'])->comment(' método de pago del cliente');
             $table->softDeletes();
             $table->timestamps();
         });

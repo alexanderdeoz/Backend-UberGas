@@ -25,28 +25,25 @@ class UpdateDriverRequest extends FormRequest
     {
         return [
             'name'=> ['required', 'max:20'],
-            'address' => ['required', 'max:500'],
-            'calification' => ['required', 'max:10'],
-            'country' => ['required', 'max:40'], 
-            'city' => ['required', 'max:40'],
-            'img_url'=>['required', 'max30'],
+            'email' => ['required', 'max:100'],
             'phone' => ['required', 'max:15'],
-            'time_close'=>['required'],
-            'time_open'=> ['required'],
+            'description' => ['required', 'max:50'], 
+            'calification' => ['required', 'max:10'],
+           'placa'=>['required', 'max:10'],
+            'vehicle'=>['required','max:20'],
+            
         ];
     }
     public function attributes()
     {
         return [
             'name'=> 'Nombre',
-            'adress' => 'Direccion',
-            'calification' => 'Calificacion',
-            'country' => 'Pais', 
-            'city' => 'Ciudad',
-            'img_url'=>'URL de imagen',            
+            'email' => 'correo electronico',
             'phone' => 'Telefono',
-            'time_close'=>'Hora de cierre',
-            'time_open'=> 'Hora de apertura',
+            'description' => 'descripcion', 
+            'calification' => 'calificacion',
+            'placa' => 'placa ',
+            'vehicle'=>'vehiculo', 
         ];
     }
 }

@@ -25,7 +25,7 @@ class UpdateClientRequest extends FormRequest
     {
         return [
             'address' => ['required', 'max:500'],
-            'payment_method' => ['required', 'max:100']
+            'payment' => ['required', 'max:100']
         ];
     }
     public function attributes()
