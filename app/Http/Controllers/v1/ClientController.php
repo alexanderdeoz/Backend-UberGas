@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\V1\Clients\DestroyClientRequest;
+use App\Http\Requests\V1\Clients\StoreClientRequest;
+use App\Http\Requests\V1\Clients\UpdateClientRequest;
+use App\Http\Resources\V1\Clients\ClientCollection;
+use App\Http\Resources\V1\Clients\ClientResource;
 use App\Models\Client;
 
 class ClientController extends Controller
@@ -34,7 +39,7 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreClientRequest $request)
     {
         $clients = new Client();
         $clients->address= $request->address;
@@ -83,7 +88,7 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $clients)
+    public function update(UpdateClientRequest $request, $clients)
     {
         $clients = Client::find($clients);
         $clients->address= $request->address;
@@ -107,10 +112,11 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($clients)
+    public function destroy(DestroyClientRequest $request)
     {
-        $clients = client::find($clients);
-            $clients->delete();
+        
+        Client::destroy($request->input('ids'));
+           
             return response()->json(
                 ['data'=> null,
                 'msg' => [

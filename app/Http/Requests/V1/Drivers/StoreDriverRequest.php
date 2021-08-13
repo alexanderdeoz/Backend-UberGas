@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\V1\Dealers;
+namespace App\Http\Requests\V1\Drivers;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateDealerRequest extends FormRequest
+class StoreDriverRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -31,6 +31,7 @@ class UpdateDealerRequest extends FormRequest
             'calification' => ['required', 'max:10'],
            'placa'=>['required', 'max:10'],
             'vehicle'=>['required','max:20'],
+            
         ];
     }
     public function attributes()
@@ -42,7 +43,8 @@ class UpdateDealerRequest extends FormRequest
             'description' => 'descripcion', 
             'calification' => 'calificacion',
             'placa' => 'placa ',
-            'vehicle'=>'vehiculo', 
+            'vehicle'=>'vehiculo',            
+            
         ];
     }
 }

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Driver;
 use Illuminate\Http\Request;
+use App\Http\Requests\V1\Drivers\DestroyDriverRequest;
+use App\Http\Requests\V1\Drivers\StoreDriverRequest;
+use App\Http\Requests\V1\Drivers\UpdateDriverRequest;
 use Illuminate\Support\Facades\DB;
 
 class DriverController extends Controller
@@ -35,7 +38,7 @@ class DriverController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreDriverRequest $request)
     {
         $drivers = new Driver();
         $drivers->name= $request->name;
@@ -90,7 +93,7 @@ class DriverController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $drivers)
+    public function update(UpdateDriverRequest $request, $drivers)
     {
         $drivers = Driver::find($drivers);
         $drivers->name= $request->name;
