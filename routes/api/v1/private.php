@@ -80,7 +80,7 @@ Route::prefix('travel')->group(function () {
     Route::get('{travels}', [TravelController::class, 'show']);
 });
 
-Route::apiResource('favorites', FavoriteController::class);
+
 
 
 

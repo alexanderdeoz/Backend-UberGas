@@ -1,12 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Exceptions\DriverNotFound;
 use App\Models\Dealer;
 use Illuminate\Http\Request;
 
 class DealerController extends Controller
 {
+    public function __construct()
+  {
+    $this->middleware('role:driver');
+  }
     /**
      * Display a listing of the resource.
      *
@@ -43,7 +47,6 @@ class DealerController extends Controller
         $dealers->country= $request->country;
         $dealers->city= $request->city;
         $dealers->img_url= $request->img_url;
-        $dealers->ranking= $request->ranking;
         $dealers->time_open= $request->time_open;
         $dealers->time_close= $request->time_close;
         $dealers->save();
@@ -98,7 +101,6 @@ class DealerController extends Controller
         $dealers->country= $request->country;
         $dealers->city= $request->city;
         $dealers->img_url= $request->img_url;
-        $dealers->ranking= $request->ranking;
         $dealers->time_open= $request->time_open;
         $dealers->time_close= $request->time_close;
         $dealers->save();

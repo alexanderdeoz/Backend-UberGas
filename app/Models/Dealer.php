@@ -17,7 +17,6 @@ class Dealer extends Model
         'img_url',
         'name',
         'phone',
-        'ranking',
         'time_close',
         'time_open',
     ];
