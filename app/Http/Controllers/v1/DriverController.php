@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\V1\Drivers\DestroyDriverRequest;
 use App\Http\Requests\V1\Drivers\StoreDriverRequest;
 use App\Http\Requests\V1\Drivers\UpdateDriverRequest;
+use App\Http\Resources\V1\Drivers\DriverCollection;
 use Illuminate\Support\Facades\DB;
 
 class DriverController extends Controller
@@ -18,18 +19,7 @@ class DriverController extends Controller
     
     public function index()
     {
-        $drivers =Driver::get();
-        return response()->json(
-            [
-                'data' => $drivers,
-                'msg' => [
-                    'sumary' => 'consulta correcta',
-                    'detail' => 'la consulta esta correcta',
-                    'code' => '201'
-                ]
-            ],
-            201
-        );
+        return new DriverCollection(Driver::paginate());
     }
 
     /**

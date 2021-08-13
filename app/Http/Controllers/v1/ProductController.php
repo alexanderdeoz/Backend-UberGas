@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\V1\Dealers\DestroyDealerRequest;
 use App\Http\Requests\V1\Products\StoreProductRequest;
 use App\Http\Requests\V1\Products\UpdateProductRequest;
+use App\Http\Resources\V1\Products\ProductCollection;
 use App\Models\Dealer;
 use App\Models\Product;
 
@@ -14,18 +15,7 @@ class ProductController extends Controller
     
     public function index()
     {
-        $products = Product::get();
-        return response()->json(
-            [
-                'data' => $products,
-                'msg' => [
-                    'sumary' => 'consulta correcta',
-                    'detail' => 'la consulta esta correcta',
-                    'code' => '201'
-                ]
-            ],
-            201
-        );
+        return new ProductCollection(Product::paginate());
     }
 
     /**
