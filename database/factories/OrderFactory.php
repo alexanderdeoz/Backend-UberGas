@@ -27,7 +27,7 @@ class OrderFactory extends Factory
             $drivers = Driver::get();
     
             return [
-                'user_u_id' => $this->faker->randomElement($usersU),
+                'user_id' => $this->faker->randomElement($usersU),
                 'driver_id' => $this->faker->randomElement($drivers),
                 'calification' => $this->faker->numerify('calificacion ###'),
                 'delivery_cost' => $this->faker->randomFloat(),

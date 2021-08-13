@@ -22,7 +22,15 @@ class DealerFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'address'=> $this->faker->address(),
+            'calification'=> $this->faker->numberBetween(1,5),
+            'city'=> $this->faker->word(),
+            'country'=> $this->faker->word(),
+            'img_url'=> $this->faker->imageUrl(),
+            'name'=> $this->faker->word(),
+            'phone'=> $this->faker->phoneNumber(),
+            'time_close'=> $this->faker->time(),
+            'time_open'=> $this->faker->time(),
         ];
     }
 }

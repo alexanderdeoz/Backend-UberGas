@@ -10,7 +10,7 @@ class Dealer extends Model
     use HasFactory;
     protected $table = 'app.dealers';
     protected $fillable = [
-        'adress',
+        'address',
         'calification',
         'city',
         'country',
