@@ -54,5 +54,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Driver::class);
     }
+    function roles()
+    {
+        return $this->hasMany(Role::class);
+    }
     
 }

@@ -22,30 +22,13 @@ class AppSeeder extends Seeder
      */
     public function run()
     {
-        Dealer::factory(10)
-        ->has(User::factory()->count(3), 'users')
-        ->has(Role::factory()->count(3), 'roles')
-        ->create();
-        User::factory(10)
-            ->has(User::factory()->count(3), 'users')
-            ->has(Role::factory()->count(3), 'roles')
-            ->create();
-        Driver::factory(10)
-            ->has(User::factory()->count(3), 'users')
-            ->has(Role::factory()->count(3), 'roles')
-            ->create();
-        Client::factory(10)
-            ->has(User::factory()->count(3), 'users')
-            ->has(Role::factory()->count(3), 'roles')
-            ->create();
-        Order::factory(10)
-            ->has(Order::factory()->count(3), 'orders')
-            ->has(Product::factory()->count(3), 'products')
-            ->create();
-        Travel::factory(10)
-            ->has(Driver::factory()->count(3), 'drivers')
-            ->has(Client::factory()->count(3), 'clients')
-            ->has(Order::factory()->count(3), 'orders')
-            ->create();
+        Travel::factory(10)->create();
+        Role::factory(10)->create();
+        Product::factory(10)->create();
+        Order::factory(10)->create();
+        User::factory(10)->create();
+        Client::factory(10)->create();
+        Driver::factory(10)->create();
+        Dealer::factory(10)->create();
     }
 }
