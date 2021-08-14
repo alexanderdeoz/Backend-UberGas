@@ -10,11 +10,15 @@ use App\Http\Requests\V1\Drivers\UpdateDriverRequest;
 use App\Http\Resources\V1\Drivers\DriverCollection;
 use Illuminate\Support\Facades\DB;
 
-class DriverController extends Controller
+class DriverController extends Controller 
 {
     public function __construct()
     {
-      $this->middleware('role:driver');
+        $this->middleware('role:admin, driver');
+        $this->middleware('permission:view-drivers')->only(['index','show']);
+        $this->middleware('permission:store-drivers')->only(['store']);
+        $this->middleware('permission:update-drivers')->only(['update']);
+        $this->middleware('permission:delete-drivers')->only(['destroy']);
     }
     
     public function index()

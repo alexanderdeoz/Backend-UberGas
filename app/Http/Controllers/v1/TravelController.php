@@ -7,20 +7,23 @@ use Illuminate\Http\Request;
 use App\Http\Requests\V1\Travels\DestroyTravelClientRequest;
 use App\Http\Requests\V1\Travels\StoreTravelRequest;
 use App\Http\Requests\V1\Travels\UpdateTravelRequest;
+use App\Http\Resources\V1\Travels\TravelCollection;
 use Illuminate\Support\Facades\DB;
 
 
 class TravelController extends Controller
 {
-    
+    public function __construct()
+    {
+        $this->middleware('role:admin, client, driver');
+        $this->middleware('permission:view-travels')->only(['index','show']);
+        $this->middleware('permission:store-travels')->only(['store']);
+        $this->middleware('permission:update-travels')->only(['update']);
+        $this->middleware('permission:delete-travels')->only(['destroy']);
+    }
         public function index()
         {
-            $travels = Travel::get();
-            return response()->json(
-               ['data'=> $travels,
-               'msg'=>['sumary'=> 'consulta correcta',
-               'detail'=>'la consulta esta correcta', 
-               'code'=>'201']], 201);
+            return new TravelCollection(Travel::paginate());
         }
     
         /**

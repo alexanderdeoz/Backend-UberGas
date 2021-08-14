@@ -7,29 +7,22 @@ use Illuminate\Http\Request;
 use App\Http\Requests\V1\Dealers\DestroyDealerRequest;
 use App\Http\Requests\V1\Dealers\StoreDealerRequest;
 use App\Http\Requests\V1\Dealers\UpdateDealerRequest;
+use App\Http\Resources\V1\Dealers\DealerCollection;
 
 class DealerController extends Controller
 {
     public function __construct()
   {
-    $this->middleware('role:driver');
-    $this->middleware('permission:view-data')->only(['index']);
+    $this->middleware('role:admin');
+        $this->middleware('permission:view-dealers')->only(['index','show']);
+        $this->middleware('permission:store-dealers')->only(['store']);
+        $this->middleware('permission:update-dealers')->only(['update']);
+        $this->middleware('permission:delete-dealers')->only(['destroy']);
         
   }
     public function index()
     {
-        $dealers = Dealer::get();
-        return response()->json(
-            [
-                'data' => $dealers,
-                'msg' => [
-                    'sumary' => 'consulta correcta',
-                    'detail' => 'la consulta esta correcta',
-                    'code' => '201'
-                ]
-            ],
-            201
-        );
+        return new DealerCollection(Dealer::paginate());
     }
 
     /**

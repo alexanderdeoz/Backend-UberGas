@@ -4,25 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Models\Role;
 use Illuminate\Http\Request;
+use App\Http\Requests\V1\Roles\DestroyRolRequest;
+use App\Http\Requests\V1\Roles\StoreRolRequest;
+use App\Http\Requests\V1\Roles\UpdateRolRequest;
+use App\Http\Resources\V1\Roles\RoleCollection;
 use Illuminate\Support\Facades\DB;
+
 
 
 class RoleController extends Controller
 {
-        /**
-         * Display a listing of the resource.
-         *
-         * @return \Illuminate\Http\Response
-         */
+    public function __construct()
+    {
+        $this->middleware('role:admin');
+        $this->middleware('permission:view-roles')->only(['index','show']);
+        $this->middleware('permission:store-roles')->only(['store']);
+        $this->middleware('permission:update-roles')->only(['update']);
+        $this->middleware('permission:delete-roles')->only(['destroy']);
+    }
         public function index()
         {
-            $roles = Role::get();
-
-            return response()->json(
-               ['data'=> $roles,
-               'msg'=>['sumary'=> 'consulta correcta',
-               'detail'=>'la consulta esta correcta', 
-               'code'=>'201']], 201);
+            return new RoleCollection(Role::paginate());
         }
     
         /**
@@ -31,7 +33,7 @@ class RoleController extends Controller
          * @param  \Illuminate\Http\Request  $request
          * @return \Illuminate\Http\Response
          */
-        public function store(Request $request)
+        public function store(StoreRolRequest $request)
         {
             $roles = new Role();
             $roles->name= $request->name;
@@ -71,7 +73,7 @@ class RoleController extends Controller
          * @param  int  $id
          * @return \Illuminate\Http\Response
          */
-        public function update(Request $request, $roles)
+        public function update(UpdateRolRequest $request, $roles)
         {
             $roles = Role::find($roles);
             $roles->name= $request->name;
@@ -114,4 +116,22 @@ class RoleController extends Controller
                 'detail' => 'EL empleado se actualizo correctamente',
                 'code' => '201']], 201
              );
-        }}
+        }
+
+        public function destroys (DestroyRolRequest $request)
+        {
+            Role::destroy($request->input('ids'));
+    
+            return response()->json(
+                [
+                    'data' => null,
+                    'msg' => [
+                        'summary' => 'Eliminado correctamente',
+                        'detail' => 'EL empleado se eliminó correctamente',
+                        'code' => '201'
+                    ]
+                ],
+                201
+            );
+        }
+    }

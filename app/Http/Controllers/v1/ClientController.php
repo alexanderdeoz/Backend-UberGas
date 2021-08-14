@@ -7,14 +7,17 @@ use App\Http\Requests\V1\Clients\DestroyClientRequest;
 use App\Http\Requests\V1\Clients\StoreClientRequest;
 use App\Http\Requests\V1\Clients\UpdateClientRequest;
 use App\Http\Resources\V1\Clients\ClientCollection;
-use App\Http\Resources\V1\Clients\ClientResource;
 use App\Models\Client;
 
 class ClientController extends Controller
 {
     public function __construct()
   {
-    $this->middleware('role:client');
+    $this->middleware('role:admin, client');
+        $this->middleware('permission:view-clients')->only(['index','show']);
+        $this->middleware('permission:store-clients')->only(['store']);
+        $this->middleware('permission:update-clients')->only(['update']);
+        $this->middleware('permission:delete-clients')->only(['destroy']);
   }
    
     public function index()

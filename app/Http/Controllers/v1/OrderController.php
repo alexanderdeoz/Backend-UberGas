@@ -6,29 +6,22 @@ use App\Models\Order;
 use App\Http\Requests\V1\Orders\DestroyOrderRequest;
 use App\Http\Requests\V1\Orders\StoreOrderRequest;
 use App\Http\Requests\V1\Orders\UpdateOrderRequest;
+use App\Http\Resources\V1\Orders\OrderCollection;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('role:admin, client, driver');
+        $this->middleware('permission:view-orders')->only(['index','show']);
+        $this->middleware('permission:store-orders')->only(['store']);
+        $this->middleware('permission:update-orders')->only(['update']);
+        $this->middleware('permission:delete-orders')->only(['destroy']);
+    }
     public function index()
     {
-        $orders = Order::get();
-        return response()->json(
-            [
-                'data' => $orders,
-                'msg' => [
-                    'sumary' => 'consulta correcta',
-                    'detail' => 'la consulta esta correcta',
-                    'code' => '201'
-                ]
-            ],
-            201
-        );
+        return new OrderCollection(Order::paginate());
     }
 
     /**
