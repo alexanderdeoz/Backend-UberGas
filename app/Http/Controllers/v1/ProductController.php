@@ -7,6 +7,7 @@ use App\Http\Requests\V1\Dealers\DestroyDealerRequest;
 use App\Http\Requests\V1\Products\StoreProductRequest;
 use App\Http\Requests\V1\Products\UpdateProductRequest;
 use App\Http\Resources\V1\Products\ProductCollection;
+use App\Http\Resources\V1\Products\ProductResource;
 use App\Models\Dealer;
 use App\Models\Product;
 
@@ -34,10 +35,10 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request)
     {
         $products = new Product();
-        $products->name= $request->name;
-        $products->description= $request->description;
-        $products->price= $request->price;
-        $products->img= $request->img;
+        $products->name= $request->input('name');
+        $products->description= $request->input('description');
+        $products->price= $request->input('price');
+        $products->img= $request->input('img');
         $products->save();
         return response()->json(
             [
@@ -60,20 +61,8 @@ class ProductController extends Controller
      */
     public function show($products)
     {
-        $products = Product::find($products);
-        return response()->json(
-            [
-                'data' => $products[0],
-                'msg' => [
-                    'sumary' => 'consulta correcta',
-                    'detail' => 'la consulta esta correcta',
-                    'code' => '200'
-                ]
-            ],
-            200
-        );
+        return new ProductResource($products);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -84,10 +73,10 @@ class ProductController extends Controller
     public function update(UpdateProductRequest $request, $products)
     {
         $products = Product::find($products);
-        $products->name= $request->name;
-        $products->description= $request->description;
-        $products->price= $request->price;
-        $products->img= $request->img;
+        $$products->name= $request->input('name');
+        $products->description= $request->input('description');
+        $products->price= $request->input('price');
+        $products->img= $request->input('img');
         $products->save();
         return response()->json(
             [

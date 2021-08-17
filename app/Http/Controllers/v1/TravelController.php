@@ -8,6 +8,7 @@ use App\Http\Requests\V1\Travels\DestroyTravelClientRequest;
 use App\Http\Requests\V1\Travels\StoreTravelRequest;
 use App\Http\Requests\V1\Travels\UpdateTravelRequest;
 use App\Http\Resources\V1\Travels\TravelCollection;
+use App\Http\Resources\V1\Travels\TravelResource;
 use Illuminate\Support\Facades\DB;
 
 
@@ -35,9 +36,9 @@ class TravelController extends Controller
         public function store(StoreTravelRequest $request)
         {
             $travels = new Travel();
-            $travels->starting= $request->starting;
-            $travels->arrival= $request->arrival;
-            $travels->value= $request->value;
+            $travels->starting= $request->input('starting');
+            $travels->arrival= $request->input('arrival');
+            $travels->value= $request->input('value');
             $travels->save();
             
             return response()->json(
@@ -55,17 +56,10 @@ class TravelController extends Controller
          * @param  int  $id
          * @return \Illuminate\Http\Response
          */
-        public function show($travel)
+        public function show($travels)
         {
-            $travel = DB::select('select * from app.travels where id = ?',[$travel]);
-            return response()->json(
-               ['data'=> $travel,
-               'msg'=>['sumary'=> 'consulta correcta',
-               'detail'=>'la consulta esta correcta', 
-               'code'=>'200']], 200
-            );
+            return new TravelResource($travels);
         }
-    
         /**
          * Update the specified resource in storage.
          *
@@ -76,9 +70,9 @@ class TravelController extends Controller
         public function update(UpdateTravelRequest $request, $travels)
         {
             $travels = Travel::find($travels);
-            $travels->starting= $request->starting;
-            $travels->arrival= $request->arrival;
-            $travels->value= $request->value;
+            $travels->starting= $request->input('starting');
+            $travels->arrival= $request->input('arrival');
+            $travels->value= $request->input('value');
             $travels->save();
             return response()->json(
                [  'data' => null,

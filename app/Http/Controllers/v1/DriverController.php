@@ -8,6 +8,7 @@ use App\Http\Requests\V1\Drivers\DestroyDriverRequest;
 use App\Http\Requests\V1\Drivers\StoreDriverRequest;
 use App\Http\Requests\V1\Drivers\UpdateDriverRequest;
 use App\Http\Resources\V1\Drivers\DriverCollection;
+use App\Http\Resources\V1\Drivers\DriverResource;
 use Illuminate\Support\Facades\DB;
 
 class DriverController extends Controller 
@@ -35,12 +36,12 @@ class DriverController extends Controller
     public function store(StoreDriverRequest $request)
     {
         $drivers = new Driver();
-        $drivers->name= $request->name;
-        $drivers->phone= $request->phone;
-        $drivers->email= $request->email;
-        $drivers->description= $request->description;
-        $drivers->placa= $request->placa;
-        $drivers->vehicle= $request->vehicle;
+        $drivers->name= $request->input('name');
+        $drivers->phone= $request->input('phone');
+        $drivers->email= $request->input('email');
+        $drivers->description= $request->input('description');
+        $drivers->placa= $request->input('placa');
+        $drivers->vehicle= $request->input('vehicle');
         $drivers->save();
 
         return response()->json(
@@ -64,20 +65,7 @@ class DriverController extends Controller
      */
     public function show($drivers)
     {
-        $drivers = DB::select('select * from app.drivers where id = ?',[$drivers]);
-        return response()->json(
-            [
-                'data' => $drivers[0],
-                'msg' => [
-                    'sumary' => 'consulta correcta',
-                    'detail' => 'la consulta esta correcta',
-                    'code' => '200'
-                ]
-            ],
-            200
-        );
-    
-
+        return new DriverResource($drivers);
     }
 
     /**
@@ -90,12 +78,12 @@ class DriverController extends Controller
     public function update(UpdateDriverRequest $request, $drivers)
     {
         $drivers = Driver::find($drivers);
-        $drivers->name= $request->name;
-        $drivers->phone= $request->phone;
-        $drivers->email= $request->email;
-        $drivers->description= $request->description;
-        $drivers->placa= $request->placa;
-        $drivers->vehicle= $request->vehicle;
+        $drivers->name= $request->input('name');
+        $drivers->phone= $request->input('phone');
+        $drivers->email= $request->input('email');
+        $drivers->description= $request->input('description');
+        $drivers->placa= $request->input('placa');
+        $drivers->vehicle= $request->input('vehicle');
         $drivers->save();
 
         return response()->json(

@@ -8,6 +8,7 @@ use App\Http\Requests\V1\Roles\DestroyRolRequest;
 use App\Http\Requests\V1\Roles\StoreRolRequest;
 use App\Http\Requests\V1\Roles\UpdateRolRequest;
 use App\Http\Resources\V1\Roles\RoleCollection;
+use App\Http\Resources\V1\Roles\RoleResource;
 use Illuminate\Support\Facades\DB;
 
 
@@ -36,7 +37,7 @@ class RoleController extends Controller
         public function store(StoreRolRequest $request)
         {
             $roles = new Role();
-            $roles->name= $request->name;
+            $roles->name= $request->input('name');
             
             $roles->save();
             
@@ -57,13 +58,7 @@ class RoleController extends Controller
          */
         public function show($roles)
         {
-            $roles = DB::select('select * from app.roles where id = ?',[$roles]);
-            return response()->json(
-               ['data'=> $roles,
-               'msg'=>['sumary'=> 'consulta correcta',
-               'detail'=>'la consulta esta correcta', 
-               'code'=>'200']], 200
-            );
+            return new RoleResource($roles);
         }
     
         /**
@@ -76,7 +71,7 @@ class RoleController extends Controller
         public function update(UpdateRolRequest $request, $roles)
         {
             $roles = Role::find($roles);
-            $roles->name= $request->name;
+            $roles->name= $request->input('name');
             $roles->save();
             
             return response()->json(

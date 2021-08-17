@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Exceptions\DriverNotFound;
+
 use App\Models\Dealer;
 use Illuminate\Http\Request;
 use App\Http\Requests\V1\Dealers\DestroyDealerRequest;
 use App\Http\Requests\V1\Dealers\StoreDealerRequest;
 use App\Http\Requests\V1\Dealers\UpdateDealerRequest;
 use App\Http\Resources\V1\Dealers\DealerCollection;
+use App\Http\Resources\V1\Dealers\DealerResource;
 
 class DealerController extends Controller
 {
@@ -34,13 +35,13 @@ class DealerController extends Controller
     public function store(StoreDealerRequest $request)
     {
         $dealers = new Dealer();
-        $dealers->name= $request->name;
-        $dealers->phone= $request->phone;
-        $dealers->adress= $request->adress;
-        $dealers->country= $request->country;
-        $dealers->city= $request->city;
-        $dealers->timeOpen= $request->timeOpen;
-        $dealers->timeClose= $request->timeClose;
+        $dealers->name= $request->input('name');
+        $dealers->phone= $request->input('phone');
+        $dealers->adress= $request->input('adress');
+        $dealers->country= $request->input('country');
+        $dealers->city= $request->input('city');
+        $dealers->timeOpen= $request->input('timeOpen');
+        $dealers->timeClose= $request->input('timeClose');
         $dealers->save();
         return response()->json(
             [
@@ -63,18 +64,7 @@ class DealerController extends Controller
      */
     public function show($dealers)
     {
-        $dealers = Dealer::find($dealers);
-        return response()->json(
-            [
-                'data' => $dealers[0],
-                'msg' => [
-                    'sumary' => 'consulta correcta',
-                    'detail' => 'la consulta esta correcta',
-                    'code' => '200'
-                ]
-            ],
-            200
-        );
+        return new DealerResource($dealers);
     }
 
     /**
@@ -87,13 +77,13 @@ class DealerController extends Controller
     public function update(UpdateDealerRequest $request, $dealers)
     {
         $dealers = Dealer::find();
-        $dealers->name= $request->name;
-        $dealers->phone= $request->phone;
-        $dealers->adress= $request->adress;
-        $dealers->country= $request->country;
-        $dealers->city= $request->city;
-        $dealers->timeOpen= $request->timeOpen;
-        $dealers->timeClose= $request->timeClose;
+        $dealers->name= $request->input('name');
+        $dealers->phone= $request->input('phone');
+        $dealers->adress= $request->input('adress');
+        $dealers->country= $request->input('country');
+        $dealers->city= $request->input('city');
+        $dealers->timeOpen= $request->input('timeOpen');
+        $dealers->timeClose= $request->input('timeClose');
         $dealers->save();
         return response()->json(
             [

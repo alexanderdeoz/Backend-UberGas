@@ -7,6 +7,7 @@ use App\Http\Requests\V1\Orders\DestroyOrderRequest;
 use App\Http\Requests\V1\Orders\StoreOrderRequest;
 use App\Http\Requests\V1\Orders\UpdateOrderRequest;
 use App\Http\Resources\V1\Orders\OrderCollection;
+use App\Http\Resources\V1\Orders\OrderResource;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -33,13 +34,13 @@ class OrderController extends Controller
     public function store(StoreOrderRequest $request)
     {
         $orders = new Order();
-        $orders->calification= $request->calification;
-        $orders->deliveryCost= $request->deliveryCost;
-        $orders->deliveryDate= $request->deliveryDate;
-        $orders->payment= $request->payment;
-        $orders->state= $request->state;
-        $orders->totalPrice= $request->totalPrice;
-        $orders->waiTime= $request->waitTime;
+        $orders->calification= $request->input('calification');
+        $orders->deliveryCost= $request->input('deliveryCost');
+        $orders->deliveryDate= $request->input('deliveryDate');
+        $orders->payment= $request->input('payment');
+        $orders->state= $request->input('state');
+        $orders->totalPrice= $request->input('totalPrice');
+        $orders->waiTime= $request->input('waitTime');
         $orders->save();
         return response()->json(
             [
@@ -60,20 +61,9 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($orders)
+     public function show($orders)
     {
-        $orders = Order::find($orders);
-        return response()->json(
-            [
-                'data' => $orders[0],
-                'msg' => [
-                    'sumary' => 'consulta correcta',
-                    'detail' => 'la consulta esta correcta',
-                    'code' => '200'
-                ]
-            ],
-            200
-        );
+        return new OrderResource($orders);
     }
 
     /**
@@ -86,13 +76,13 @@ class OrderController extends Controller
     public function update(UpdateOrderRequest $request, $orders)
     {
         $orders = Order::find($orders);
-        $orders->calification= $request->calification;
-        $orders->deliveryCost= $request->deliveryCost;
-        $orders->deliveryDate= $request->deliveryDate;
-        $orders->payment= $request->payment;
-        $orders->state= $request->state;
-        $orders->totalPrice= $request->totalPrice;
-        $orders->waiTime= $request->waitTime;
+        $orders->calification= $request->input('calification');
+        $orders->deliveryCost= $request->input('deliveryCost');
+        $orders->deliveryDate= $request->input('deliveryDate');
+        $orders->payment= $request->input('payment');
+        $orders->state= $request->input('state');
+        $orders->totalPrice= $request->input('totalPrice');
+        $orders->waiTime= $request->input('waitTime');
         $orders->save();
         return response()->json(
             [

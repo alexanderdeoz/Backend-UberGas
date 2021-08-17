@@ -6,6 +6,14 @@ use Illuminate\Http\Request;
 
 class DetailOrderController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('role:admin, client');
+        $this->middleware('permission:view-detailsOrders')->only(['index', 'show']);
+        $this->middleware('permission:store-detailsOrders')->only(['store']);
+        $this->middleware('permission:update-detailsOrders')->only(['update']);
+        $this->middleware('permission:delete-detailsOrders')->only(['destroy']);
+    }
     /**
      * Display a listing of the resource.
      *

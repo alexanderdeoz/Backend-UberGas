@@ -7,6 +7,7 @@ use App\Http\Requests\V1\Clients\DestroyClientRequest;
 use App\Http\Requests\V1\Clients\StoreClientRequest;
 use App\Http\Requests\V1\Clients\UpdateClientRequest;
 use App\Http\Resources\V1\Clients\ClientCollection;
+use App\Http\Resources\V1\Clients\ClientResource;
 use App\Models\Client;
 
 class ClientController extends Controller
@@ -34,8 +35,8 @@ class ClientController extends Controller
     public function store(StoreClientRequest $request)
     {
         $clients = new Client();
-        $clients->address= $request->address;
-        $clients->payment= $request->payment;
+        $clients->address= $request->input('address');
+        $clients->payment= $request->input('payment');
         $clients->save();
         
         return response()->json(
@@ -59,18 +60,7 @@ class ClientController extends Controller
      */
     public function show($clients)
     {
-        $clients = Client::find($clients);
-        return response()->json(
-            [
-                'data' => $clients[0],
-                'msg' => [
-                    'sumary' => 'consulta correcta',
-                    'detail' => 'la consulta esta correcta',
-                    'code' => '200'
-                ]
-            ],
-            200
-        );
+        return new ClientResource($clients);
     }
 
     /**
@@ -83,8 +73,8 @@ class ClientController extends Controller
     public function update(UpdateClientRequest $request, $clients)
     {
         $clients = Client::find($clients);
-        $clients->address= $request->address;
-        $clients->payment= $request->payment;
+        $clients->address= $request->input('address');
+        $clients->payment= $request->input('payment');
         $clients->save();
             return response()->json(
                [  'data' => null,
