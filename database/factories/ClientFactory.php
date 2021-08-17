@@ -22,7 +22,7 @@ class ClientFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => $this->faker->address(),
+            'user_id' => $this->faker->name(),
             'payment_id' => $this->faker->randomElement(['efectivo', 'tarjeta']),
         ];
     }

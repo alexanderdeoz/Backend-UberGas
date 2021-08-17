@@ -12,8 +12,7 @@ class Client extends Model
 	use SoftDeletes;
     protected $table = 'app.clients';
 	protected $fillable = [
-		'address',
-		'payment'
+		'name'
 	];
 
 	public function orders()
@@ -22,8 +21,12 @@ class Client extends Model
 	}
 	public function products()
 	{
-		return $this->belongsToMany(Product::class, 'product_id', 'user_id')
-			->withTimestamps();
+		return $this->belongsToMany(Product::class);
+			
+	}
+	public function payments()
+	{
+		return $this->belongsTo(Payment::class);
 	}
 	public function users()
 	{

@@ -8,6 +8,7 @@ use App\Http\Controllers\v1\DriverController;
 use App\Http\Controllers\v1\OrderController;
 use App\Http\Controllers\v1\ProductController;
 use App\Http\Controllers\v1\DetailOrderController;
+use App\Http\Controllers\v1\PaymentController;
 use App\Http\Controllers\v1\TravelController;
 use App\Http\Controllers\v1\RoleController;
 
@@ -48,6 +49,9 @@ Route::apiResource('dealers', DealerController::class);
 Route::prefix('dealer')->group(function () {
     Route::patch('destroys', [DealerController::class, 'destroys']);
 });
+
+//rutas metodos de pagos
+Route::apiResource('payments',PaymentController::class);
 
 //rutas para los roles
 Route::apiResource('roles',RoleController::class);

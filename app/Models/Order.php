@@ -29,10 +29,18 @@ class Order extends Model
     {
         return $this->hasOne(User::class);
     }
+    public function clients()
+    {
+        return $this->hasOne(Client::class);
+    }
     public function drivers()
     {
         return $this->hasOne(Driver::class);
     }
+    public function payments()
+	{
+		return $this->belongsTo(Payment::class);
+	}
     function travels()
     {
         return $this->hasMany(Travel::class);

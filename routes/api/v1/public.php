@@ -20,10 +20,6 @@ use Illuminate\Support\Facades\Artisan;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('Welcome', function () {
-    return response()->json('Todo posi');
-});
-
 
 Route::get('init', function () {
     if (env('APP_ENV') != 'local') {

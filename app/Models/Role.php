@@ -20,6 +20,10 @@ class Role extends Model
         return $this->belongsTo(Travel::class);
     }
 
+    function client()
+    {
+        return $this->belongsTo(Client::class);
+    }
     function driver()
     {
         return $this->belongsTo(Travel::class);
