@@ -26,7 +26,6 @@ class StoreDealerRequest extends FormRequest
         return [
             'name'=> ['required', 'max:20'],
             'address' => ['required', 'max:500'],
-            'calification' => ['required', 'max:10'],
             'country' => ['required', 'max:30'], 
             'city' => ['required'],
             'phone' => ['required', 'max:15'],
@@ -39,7 +38,6 @@ class StoreDealerRequest extends FormRequest
         return [
             'name'=> 'Nombre',
             'adress' => 'Direccion',
-            'calification' => 'Calificacion',
             'country' => 'Pais', 
             'city' => 'Ciudad',
             'phone' => 'Telefono',

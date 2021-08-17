@@ -23,7 +23,6 @@ class DealerFactory extends Factory
     {
         return [
             'address'=> $this->faker->address(),
-            'calification'=> $this->faker->numberBetween(1,5),
             'city'=> $this->faker->word(),
             'country'=> $this->faker->word(),
             'name'=> $this->faker->word(),

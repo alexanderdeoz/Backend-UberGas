@@ -16,11 +16,10 @@ class CreateAppProductsTable extends Migration
         Schema::connection(env('DB_CONNECTION_APP'))->create('products', function (Blueprint $table) {
             $table->id();
             $table->foreignId('dealer_id')->constrained('app.dealers');
-            $table->text('name')->comment('Nombre del producto');
+            $table->text('name')->comment('Nombre del producto gas domestico o gas industrial');
             $table->float('price')->comment('Precio del producto');
-            $table->text('description')->comment('Descripción del producto');
-            $table->text('img')->comment('imagén del producto');
-             $table->softDeletes();
+            $table->text('description')->comment('Descripción del producto gas domestico o gas industrial');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -17,12 +17,11 @@ class CreateAppOrdersTable extends Migration
             $table->id();
             $table->foreignId('clients_id')->constrained('app.users');
             $table->foreignId('driver_id')->constrained('app.drivers');
-            $table->text('calification')->comment('Calificación sobre 5 del pedido');
             $table->double('deliveryCost', 8, 2)->comment('Costo de la entrega');
-            $table->date('deliveryDate')->comment('Fecha del pedido');
+            $table->dateTime('deliveryDate')->comment('Fecha y hora del pedido');
             $table->enum('state', ['pendiente', 'aceptado', 'viaje', 'entregado'])->comment('Estado del pedido');
-            $table->enum('payment', ['efectivo', 'tarjeta', 'cupon'])->comment('Método de pago del pedido');
-            $table->time('waitTime')->comment('Tiempo de espera desde la aceptación');
+            $table->enum('payment', ['efectivo', 'tarjeta'])->comment('Método de pago del pedido');
+            $table->time('waitTime')->comment('Tiempo de espera para la entrega del tanque de gas');
             $table->double('totalPrice')->comment('Precio total del pedido');
             $table->softDeletes();
             $table->timestamps();

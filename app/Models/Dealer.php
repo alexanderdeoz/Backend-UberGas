@@ -13,7 +13,6 @@ class Dealer extends Model
     protected $table = 'app.dealers';
     protected $fillable = [
         'address',
-        'calification',
         'city',
         'country',
         'name',
@@ -25,5 +24,9 @@ class Dealer extends Model
       public function products()
     {
         return $this->hasMany(Product::class);
+    }
+    public function drivers()
+    {
+        return $this->hasMany(Driver::class);
     }
 }

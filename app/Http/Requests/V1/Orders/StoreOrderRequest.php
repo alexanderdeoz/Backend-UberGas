@@ -14,7 +14,6 @@ class StoreOrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'calification' => ['required', 'max:20'],
             'deliveryCost' => ['required'],
             'deliveryDate' => ['required'],
             'state' => ['required'],
@@ -26,10 +25,9 @@ class StoreOrderRequest extends FormRequest
     public function attributes()
     {
         return [
-            'calification' => 'Calificación',
             'deliveryCost' => 'Costo de la entrega',
             'deliveryDate' => 'Fecha de entrega',
-            'state' => 'Estado',
+            'state' => 'Estado de la entrega',
             'payment' => 'Pago',
             'waitTime' => 'Tiempo de espera',
             'totalPrice' => 'Precio total',

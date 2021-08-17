@@ -6,6 +6,7 @@ use App\Models\Client;
 use App\Models\Dealer;
 use App\Models\Driver;
 use App\Models\Order;
+use App\Models\Payment;
 use App\Models\Product;
 use App\Models\Role;
 use App\Models\Travel;
@@ -24,6 +25,7 @@ class AppSeeder extends Seeder
     {
         Travel::factory(10)->create();
         Role::factory(10)->create();
+        Payment::factory(10)->create();
         Product::factory(10)->create();
         Order::factory(10)->create();
         User::factory(10)->create();

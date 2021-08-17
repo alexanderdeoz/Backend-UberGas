@@ -16,8 +16,8 @@ class CreateAppClientsTable extends Migration
         Schema::connection(env('DB_CONNECTION_APP'))->create('clients', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('app.users');
-            $table->text('address')->comment('Dirección domiciliaria');
-            $table->enum('payment', ['efectivo', 'tarjeta'])->comment(' método de pago del cliente');
+            $table->foreignId('role_id')->constrained('app.roles');
+            $table->foreignId('payment_id')->constrained('app.payments');
             $table->softDeletes();
             $table->timestamps();
         });

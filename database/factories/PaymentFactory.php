@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Product;
+use App\Models\Payment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ProductFactory extends Factory
+class PaymentFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Product::class;
+    protected $model = Payment::class;
 
     /**
      * Define the model's default state.
@@ -22,9 +22,8 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-        'description' => $this->faker->randomElement(['tanque de gas de uso domestico','tanque de gas de uso insdustrial']),
-        'name' => $this->faker->word(),
-        'price' => $this->faker->numberfloat(),
+            'name' => $this->randomElements(['efectivo', 'tarjeta']),
+            
         ];
     }
 }

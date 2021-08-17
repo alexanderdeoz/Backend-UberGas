@@ -10,11 +10,10 @@ class OrderResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'calification' => $this->calification,
             'deliveryCost' => $this->delivery_cost,
             'deliveryDate' => $this->delivery_date,
             'state' => $this->state,
-            'payment' => $this->payment_method,
+            'payment' => $this->payment,
             'waitTime' => $this->wait_time,
             'totalPrice' => $this->total_price
         ];

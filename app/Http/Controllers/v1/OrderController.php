@@ -76,7 +76,6 @@ class OrderController extends Controller
     public function update(UpdateOrderRequest $request, $orders)
     {
         $orders = Order::find($orders);
-        $orders->calification= $request->input('calification');
         $orders->deliveryCost= $request->input('deliveryCost');
         $orders->deliveryDate= $request->input('deliveryDate');
         $orders->payment= $request->input('payment');

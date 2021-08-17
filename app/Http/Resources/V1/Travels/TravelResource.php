@@ -16,9 +16,9 @@ class TravelResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'client' => $this->client,
-            'driver' => $this->driver,
-            'order' => $this->order,
+            'client_id' => $this->client,
+            'driver_id' => $this->driver,
+            'order_id' => $this->order,
             
         ];
     }

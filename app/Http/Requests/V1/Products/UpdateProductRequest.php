@@ -17,7 +17,6 @@ class UpdateProductRequest extends FormRequest
             'name' => ['required', 'max:20'],
             'description' => ['required', 'max: 50'],
             'price' => ['required'],
-            'img' => ['required','max:30'],
         ];
     }
     public function attributes()
@@ -26,7 +25,6 @@ class UpdateProductRequest extends FormRequest
             'name' => 'Nombre del producto',
             'description' => 'Descripcion del producto',
             'price' => 'Precio del producto',
-            'img' => ' imagen del producto',
-        ];
+            ];
     }
 }

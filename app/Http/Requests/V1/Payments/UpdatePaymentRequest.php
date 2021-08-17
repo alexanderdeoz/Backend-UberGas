@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\V1\Drivers;
+namespace App\Http\Requests\V1\Payments;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreDriverRequest extends FormRequest
+class UpdatePaymentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,23 +25,13 @@ class StoreDriverRequest extends FormRequest
     {
         return [
             'name'=> ['required', 'max:20'],
-            'email' => ['required', 'max:100'],
-            'phone' => ['required', 'max:15'],
-            'description' => ['required', 'max:50'], 
-            'placa'=>['required', 'max:10'],
-            'vehicle'=>['required','max:20'],
-            
         ];
+            
     }
     public function attributes()
     {
         return [
             'name'=> 'Nombre',
-            'email' => 'correo electronico',
-            'phone' => 'Telefono',
-            'description' => 'descripcion', 
-            'placa' => 'placa ',
-            'vehicle'=>'vehiculo',            
             
         ];
     }

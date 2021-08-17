@@ -23,18 +23,17 @@ class OrderFactory extends Factory
      */
     public function definition()
     {
-            $usersU = Client::get();
+            $clients = Client::get();
             $drivers = Driver::get();
     
             return [
-                'user_id' => $this->faker->randomElement($usersU),
+                'user_id' => $this->faker->randomElement($clients),
                 'driver_id' => $this->faker->randomElement($drivers),
-                'calification' => $this->faker->numerify('calificacion ###'),
                 'deliveryCost' => $this->faker->randomFloat(),
-                'deliveryDate' => $this->faker->dateTimeThisCentury($max = 'now', $timezone = null),
-                'state' => $this->faker->randomElement(['pendiente', 'aceptado', 'viaje', 'entregado']),
-                'payment' => $this->faker->randomElement(['efectivo', 'tarjeta', 'cupon']),
-                'wait_time' => $this->faker->time($format = 'H:i:s', $max = 'now'),
+                'deliveryDate' => $this->faker->dateTime(),
+                'state' => $this->faker->randomElement(['pendiente', 'aceptado', 'en camino', 'entregado']),
+                'payment' => $this->faker->randomElement(['efectivo', 'tarjeta']),
+                'wait_time' => $this->faker->time('H:i:s'),
                 'totalPrice' => $this->faker->randomFloat(),
             ];
         

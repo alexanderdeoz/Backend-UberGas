@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAppRolesTable extends Migration
+class CreateAppPaymentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,10 +14,9 @@ class CreateAppRolesTable extends Migration
     public function up()
     {
         Schema::connection(env('DB_CONNECTION_APP'))
-            ->create('roles', function (Blueprint $table) {
+            ->create('payments', function (Blueprint $table) {
                 $table->id();
-                $table->string('name')->comment('nombre de los roles');
-                $table->softDeletes();
+                $table->string('name')->comment('Nombre del metodo de pago');;
                 $table->timestamps();
             });
     }
@@ -29,6 +28,6 @@ class CreateAppRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('payments');
     }
 }

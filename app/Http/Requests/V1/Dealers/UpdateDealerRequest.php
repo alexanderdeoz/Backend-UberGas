@@ -26,10 +26,8 @@ class UpdateDealerRequest extends FormRequest
         return [
             'name'=> ['required', 'max:20'],
             'address' => ['required', 'max:500'],
-            'calification' => ['required', 'max:10'],
             'country' => ['required', 'max:40'], 
             'city' => ['required', 'max:40'],
-            'img'=>['required', 'max30'],
             'phone' => ['required', 'max:15'],
             'timeClose'=>['required'],
             'timeOpen'=> ['required'],
@@ -40,10 +38,8 @@ class UpdateDealerRequest extends FormRequest
         return [
             'name'=> 'Nombre',
             'adress' => 'Direccion',
-            'calification' => 'Calificacion',
             'country' => 'Pais', 
             'city' => 'Ciudad',
-            'img'=>' imagen',            
             'phone' => 'Telefono',
             'timeClose'=>'Hora de cierre',
             'timeOpen'=> 'Hora de apertura',
