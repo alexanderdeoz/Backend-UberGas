@@ -31,6 +31,6 @@ class CreateAppTravelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('travels');
+        Schema::connection(env('DB_CONNECTION_APP'))->dropIfExists('travels');
     }
 }

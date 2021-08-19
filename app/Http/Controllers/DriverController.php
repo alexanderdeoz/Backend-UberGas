@@ -36,6 +36,10 @@ class DriverController extends Controller
     public function store(StoreDriverRequest $request)
     {
         $drivers = new Driver();
+        $drivers->birthdate = $request->input('birthdate');
+        $drivers->email = $request->input('email');
+        $drivers->email_verified_at = $request->input('email_verified_at');
+        $drivers->password_changed = $request->input('password_changed');
         $drivers->name= $request->input('name');
         $drivers->phone= $request->input('phone');
         $drivers->placa= $request->input('placa');

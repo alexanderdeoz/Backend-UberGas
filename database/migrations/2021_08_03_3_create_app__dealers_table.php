@@ -33,6 +33,6 @@ class CreateAppDealersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dealers');
+        Schema::connection(env('DB_CONNECTION_APP'))->dropIfExists('dealers');
     }
 }

@@ -28,6 +28,6 @@ class CreateAppPaymentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payments');
+        Schema::connection(env('DB_CONNECTION_APP'))->dropIfExists('payments');
     }
 }

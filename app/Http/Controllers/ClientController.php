@@ -35,7 +35,7 @@ class ClientController extends Controller
     public function store(StoreClientRequest $request)
     {
         $clients = new Client();
-        $clients->name= $request->input('name');
+        $clients-> method= $request->input('method');
         $clients->save();
         
         return response()->json(
@@ -72,7 +72,7 @@ class ClientController extends Controller
     public function update(UpdateClientRequest $request, $clients)
     {
         $clients = Client::find($clients);
-        $clients->name= $request->input('name');
+        $clients-> method= $request->input('method');
         $clients->save();
             return response()->json(
                [  'data' => null,

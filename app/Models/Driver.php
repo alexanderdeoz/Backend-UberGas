@@ -11,14 +11,24 @@ class Driver extends Model
 {
     use HasFactory;
 	use SoftDeletes;
-    protected $table = 'app.driver';
+    protected $table = 'app.drivers';
 	protected $fillable = [
 		'name',
+		'lastname',
+		'birthay',
 		'phone',
 		'placa',
 		'vehicle',
+		'email',
+        'email_verified_at',
+        'password',
+
 
 	];
+	protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 
 	public function orders()
 	{

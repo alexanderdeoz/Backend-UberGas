@@ -34,8 +34,6 @@ class UserController extends Controller
         $users = new User();
         $users->name = $request->input('name');
         $users->lastname = $request->input('lastname');
-        $users->avatar = $request->input('avatar');
-        $users->username = $request->input('username');
         $users->birthdate = $request->input('birthdate');
         $users->email = $request->input('email');
         $users->email_verified_at = $request->input('email_verified_at');
@@ -76,11 +74,9 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $users)
     {
-        $users->username = $request->input('username');
+        
         $users->name = $request->input('name');
         $users->lastname = $request->input('lastname');
-        $users->avatar = $request->input('avatar');
-        $users->username = $request->input('username');
         $users->birthdate = $request->input('birthdate');
         $users->email = $request->input('email');
         $users->email_verified_at = $request->input('email_verified_at');

@@ -23,6 +23,7 @@ class ClientFactory extends Factory
     {
         return [
             'user_id' => $this->faker->name(),
+            'role_id' => $this->faker->string('cliente'),
             'payment_id' => $this->faker->randomElement(['efectivo', 'tarjeta']),
         ];
     }

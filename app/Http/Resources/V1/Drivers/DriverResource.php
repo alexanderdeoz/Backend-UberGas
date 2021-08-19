@@ -17,9 +17,15 @@ class DriverResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'lastname'=>$this->name,
+            'birthdate' => $this->birthdate,
+            'email' => $this->email,
+            'email_verified_at' => $this->email_verified_at,
+            'password_changed' => $this->password_changed,
             'phone' => $this->phone,
             'placa' => $this->placa,
             'vehicle' => $this->vehicle,
         ];
     }
 }
+ 

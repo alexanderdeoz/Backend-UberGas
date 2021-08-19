@@ -25,6 +25,7 @@ class StoreDriverRequest extends FormRequest
     {
         return [
             'name'=> ['required', 'max:20'],
+            'lastname'=>['required','min:2','max:100'],
             'email' => ['required', 'max:100'],
             'phone' => ['required', 'max:15'],
             'placa'=>['required', 'max:10'],

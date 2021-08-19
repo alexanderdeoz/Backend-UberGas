@@ -31,6 +31,6 @@ class CreateAppRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::connection(env('DB_CONNECTION_APP'))->dropIfExists('roles');
     }
 }

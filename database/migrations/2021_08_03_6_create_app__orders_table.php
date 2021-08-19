@@ -15,9 +15,9 @@ class CreateAppOrdersTable extends Migration
     {
         Schema::connection(env('DB_CONNECTION_APP'))->create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('clients_id')->constrained('app.users');
-            $table->foreignId('driver_id')->constrained('app.drivers');
-            $table->double('deliveryPrice', 8, 2)->comment('Costo de la entrega');
+            $table->foreignId('user_id')->constrained('app.users');
+            //$table->foreignId('driver_id')->constrained('app.drivers');
+            $table->double('deliveryPrice')->comment('Costo de la entrega');
             $table->dateTime('deliveryDate')->comment('Fecha y hora del pedido');
             $table->enum('state', ['pendiente', 'aceptado', 'viaje', 'entregado'])->comment('Estado del pedido');
             $table->enum('payment', ['efectivo', 'tarjeta'])->comment('Método de pago del pedido');
