@@ -14,23 +14,23 @@ class StoreOrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'deliveryCost' => ['required'],
+            'deliveryPrice' => ['required'],
             'deliveryDate' => ['required'],
             'state' => ['required'],
             'payment' => ['required'],
             'waitTime' => ['required'],
-            'totalPrice' => ['required']
+            
         ];
     }
     public function attributes()
     {
         return [
-            'deliveryCost' => 'Costo de la entrega',
+            'deliveryPrice' => 'Costo de la entrega',
             'deliveryDate' => 'Fecha de entrega',
             'state' => 'Estado de la entrega',
             'payment' => 'Pago',
             'waitTime' => 'Tiempo de espera',
-            'totalPrice' => 'Precio total',
+            
         ];
     }
 }

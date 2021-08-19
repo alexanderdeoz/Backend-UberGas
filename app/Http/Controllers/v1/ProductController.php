@@ -38,7 +38,6 @@ class ProductController extends Controller
         $products->name= $request->input('name');
         $products->description= $request->input('description');
         $products->price= $request->input('price');
-        $products->img= $request->input('img');
         $products->save();
         return response()->json(
             [
@@ -76,7 +75,6 @@ class ProductController extends Controller
         $$products->name= $request->input('name');
         $products->description= $request->input('description');
         $products->price= $request->input('price');
-        $products->img= $request->input('img');
         $products->save();
         return response()->json(
             [

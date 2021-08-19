@@ -23,6 +23,9 @@ class RoleFactory extends Factory
     {
         return [
             'name' => $this->faker->randomElements(['administrator', 'client', 'driver']),
+            'description' => $this->faker->paragraph(),
+            'condition'=> $this->faker->randomElements(['true', 'false']),
+            
         ];
     }
 }

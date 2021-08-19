@@ -22,7 +22,6 @@ class DriverFactory extends Factory
     public function definition()
     {
         return [
-            'description' => $this->faker->sentence(),
             'name'=> $this->faker->name(),
             'phone'=> $this->faker->phoneNumber(),
             'placa' => $this->faker->userName(),

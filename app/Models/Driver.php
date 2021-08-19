@@ -13,7 +13,6 @@ class Driver extends Model
 	use SoftDeletes;
     protected $table = 'app.driver';
 	protected $fillable = [
-		'description',
 		'name',
 		'phone',
 		'placa',

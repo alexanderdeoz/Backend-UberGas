@@ -14,7 +14,6 @@ class Dealer extends Model
     protected $fillable = [
         'address',
         'city',
-        'country',
         'name',
         'phone',
         'timeClose',

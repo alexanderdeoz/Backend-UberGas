@@ -26,7 +26,6 @@ class UpdateDriverRequest extends FormRequest
         return [
             'name'=> ['required', 'max:20'],
             'phone' => ['required', 'max:15'],
-            'description' => ['required', 'max:50'], 
             'placa'=>['required', 'max:10'],
             'vehicle'=>['required','max:20'],
             
@@ -37,7 +36,6 @@ class UpdateDriverRequest extends FormRequest
         return [
             'name'=> 'Nombre',
             'phone' => 'Telefono',
-            'description' => 'descripcion', 
             'placa' => 'placa ',
             'vehicle'=>'vehiculo', 
         ];

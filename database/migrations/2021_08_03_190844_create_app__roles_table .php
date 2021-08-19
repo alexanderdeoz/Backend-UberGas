@@ -17,6 +17,8 @@ class CreateAppRolesTable extends Migration
             ->create('roles', function (Blueprint $table) {
                 $table->id();
                 $table->string('name')->comment('nombre de los roles');
+                $table->string('description')->nullable()->comment('descripcion del rol');
+                $table->boolean('condition')->default(1)->comment('condicion del rol');
                 $table->softDeletes();
                 $table->timestamps();
             });

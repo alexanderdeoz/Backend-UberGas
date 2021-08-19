@@ -27,7 +27,6 @@ class StoreDriverRequest extends FormRequest
             'name'=> ['required', 'max:20'],
             'email' => ['required', 'max:100'],
             'phone' => ['required', 'max:15'],
-            'description' => ['required', 'max:50'], 
             'placa'=>['required', 'max:10'],
             'vehicle'=>['required','max:20'],
             
@@ -39,7 +38,6 @@ class StoreDriverRequest extends FormRequest
             'name'=> 'Nombre',
             'email' => 'correo electronico',
             'phone' => 'Telefono',
-            'description' => 'descripcion', 
             'placa' => 'placa ',
             'vehicle'=>'vehiculo',            
             

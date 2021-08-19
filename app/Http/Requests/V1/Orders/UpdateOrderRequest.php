@@ -14,12 +14,12 @@ class UpdateOrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'deliveryCost' => ['required'],
+            'deliveryPrice' => ['required'],
             'deliveryDate' => ['required'],
             'state' => ['required'],
             'payment' => ['required'],
             'waitTime' => ['required'],
-            'totalPrice' => ['required']
+            
         ];
     }
     public function attributes()
@@ -30,7 +30,7 @@ class UpdateOrderRequest extends FormRequest
             'state' => 'Estado de la entrega',
             'payment' => ' pago',
             'waitTime' => 'Tiempo de espera',
-            'totalPrice' => 'Precio total',
+            
         ];
     }
 }

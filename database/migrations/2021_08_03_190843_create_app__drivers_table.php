@@ -17,9 +17,7 @@ class CreateAppDriversTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('authentication.users');
             $table->name('name')->comment('Nombre del conductor');
-            $table->text('description')->comment('Descripción del conductor');
             $table->phone('phone')->comment('Telefono del conductor');
-            $table->enum('vehicle', ['camioneta', 'automovil']);
             $table->text('placa')->comment('Placa del vehiculo ');
             $table->enum('vehicle', ['camioneta', 'automovil']);
             $table->softDeletes();

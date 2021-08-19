@@ -38,7 +38,6 @@ class DriverController extends Controller
         $drivers = new Driver();
         $drivers->name= $request->input('name');
         $drivers->phone= $request->input('phone');
-        $drivers->description= $request->input('description');
         $drivers->placa= $request->input('placa');
         $drivers->vehicle= $request->input('vehicle');
         $drivers->save();
@@ -79,8 +78,6 @@ class DriverController extends Controller
         $drivers = Driver::find($drivers);
         $drivers->name= $request->input('name');
         $drivers->phone= $request->input('phone');
-        $drivers->email= $request->input('email');
-        $drivers->description= $request->input('description');
         $drivers->placa= $request->input('placa');
         $drivers->vehicle= $request->input('vehicle');
         $drivers->save();

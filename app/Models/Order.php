@@ -12,11 +12,10 @@ class Order extends Model
     use SoftDeletes;
     protected $table = 'app.orders';
     protected $fillable = [
-        'deliveryCost',
         'deliveryDate',
+        'deliveryPrice',
         'payment',
         'state',
-        'totalPrice',
         'waitTime',
         
     ];

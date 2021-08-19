@@ -29,13 +29,12 @@ class OrderFactory extends Factory
             return [
                 'user_id' => $this->faker->randomElement($clients),
                 'driver_id' => $this->faker->randomElement($drivers),
-                'deliveryCost' => $this->faker->randomFloat(),
+                'deliveryPrice' => $this->faker->randomFloat(),
                 'deliveryDate' => $this->faker->dateTime(),
                 'state' => $this->faker->randomElement(['pendiente', 'aceptado', 'en camino', 'entregado']),
                 'payment' => $this->faker->randomElement(['efectivo', 'tarjeta']),
                 'wait_time' => $this->faker->time('H:i:s'),
-                'totalPrice' => $this->faker->randomFloat(),
-            ];
+                ];
         
     }
 }

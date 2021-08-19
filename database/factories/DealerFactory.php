@@ -24,7 +24,6 @@ class DealerFactory extends Factory
         return [
             'address'=> $this->faker->address(),
             'city'=> $this->faker->word(),
-            'country'=> $this->faker->word(),
             'name'=> $this->faker->word(),
             'phone'=> $this->faker->phoneNumber(),
             'timeClose'=> $this->faker->time(),

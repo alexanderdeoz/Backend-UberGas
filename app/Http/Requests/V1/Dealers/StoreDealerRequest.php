@@ -26,7 +26,6 @@ class StoreDealerRequest extends FormRequest
         return [
             'name'=> ['required', 'max:20'],
             'address' => ['required', 'max:500'],
-            'country' => ['required', 'max:30'], 
             'city' => ['required'],
             'phone' => ['required', 'max:15'],
             'timeClose'=>['required'],
@@ -37,8 +36,7 @@ class StoreDealerRequest extends FormRequest
     {
         return [
             'name'=> 'Nombre',
-            'adress' => 'Direccion',
-            'country' => 'Pais', 
+            'address' => 'Direccion',
             'city' => 'Ciudad',
             'phone' => 'Telefono',
             'timeClose'=>'Hora de cierre',

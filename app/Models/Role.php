@@ -10,21 +10,24 @@ class Role extends Model
     use HasFactory;
     protected $table = 'app.roles';
     protected $fillable = [
+        'condition',
+        'description',
         'name',
     ];
+    public $timestamps = false;
 
     
 
-    function user()
+    function users()
     {
-        return $this->belongsTo(Travel::class);
+        return $this->hasMany(User::class);
     }
 
-    function client()
+    function clients()
     {
         return $this->belongsTo(Client::class);
     }
-    function driver()
+    function drivers()
     {
         return $this->belongsTo(Travel::class);
     }

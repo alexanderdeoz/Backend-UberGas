@@ -34,12 +34,10 @@ class OrderController extends Controller
     public function store(StoreOrderRequest $request)
     {
         $orders = new Order();
-        $orders->calification= $request->input('calification');
-        $orders->deliveryCost= $request->input('deliveryCost');
+        $orders->deliveryPrice= $request->input('deliveryPrice');
         $orders->deliveryDate= $request->input('deliveryDate');
         $orders->payment= $request->input('payment');
         $orders->state= $request->input('state');
-        $orders->totalPrice= $request->input('totalPrice');
         $orders->waiTime= $request->input('waitTime');
         $orders->save();
         return response()->json(
@@ -76,11 +74,10 @@ class OrderController extends Controller
     public function update(UpdateOrderRequest $request, $orders)
     {
         $orders = Order::find($orders);
-        $orders->deliveryCost= $request->input('deliveryCost');
+        $orders->deliveryPrice= $request->input('deliveryPrice');
         $orders->deliveryDate= $request->input('deliveryDate');
         $orders->payment= $request->input('payment');
         $orders->state= $request->input('state');
-        $orders->totalPrice= $request->input('totalPrice');
         $orders->waiTime= $request->input('waitTime');
         $orders->save();
         return response()->json(

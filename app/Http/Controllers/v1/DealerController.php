@@ -37,8 +37,7 @@ class DealerController extends Controller
         $dealers = new Dealer();
         $dealers->name= $request->input('name');
         $dealers->phone= $request->input('phone');
-        $dealers->adress= $request->input('adress');
-        $dealers->country= $request->input('country');
+        $dealers->address= $request->input('address');
         $dealers->city= $request->input('city');
         $dealers->timeOpen= $request->input('timeOpen');
         $dealers->timeClose= $request->input('timeClose');
@@ -79,8 +78,7 @@ class DealerController extends Controller
         $dealers = Dealer::find();
         $dealers->name= $request->input('name');
         $dealers->phone= $request->input('phone');
-        $dealers->adress= $request->input('adress');
-        $dealers->country= $request->input('country');
+        $dealers->address= $request->input('address');
         $dealers->city= $request->input('city');
         $dealers->timeOpen= $request->input('timeOpen');
         $dealers->timeClose= $request->input('timeClose');
