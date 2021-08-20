@@ -13,7 +13,7 @@ class CreateAppUsersTable extends Migration
      */
     public function up()
     {
-        Schema::connection(env('DB_CONNECTION_APP'))->create('users', function (Blueprint $table) {
+        Schema::connection(env('DB_CONNECTION_APP'))->create('app.users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('lastname');
@@ -33,6 +33,6 @@ class CreateAppUsersTable extends Migration
      */
     public function down()
     {
-        Schema::connection(env('DB_CONNECTION_APP'))->dropIfExists('users');
+        Schema::connection(env('DB_CONNECTION_APP'))->dropIfExists('app.users');
     }
 }

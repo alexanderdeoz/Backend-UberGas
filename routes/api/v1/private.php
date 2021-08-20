@@ -11,8 +11,7 @@ use App\Http\Controllers\v1\DetailOrderController;
 use App\Http\Controllers\v1\PaymentController;
 use App\Http\Controllers\v1\TravelController;
 use App\Http\Controllers\v1\RoleController;
-
-use App\Models\User;
+use App\Http\Controllers\v1\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,11 +23,9 @@ use App\Models\User;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::get('users',[InvoiceController::class, 'index']);
+ Route::apiResource('users', UserController::class);
 
-// Route::apiResource('users', UserController::class);
-// Route::prefix('user')->group(function (){
-//     Route::patch()
-// });
 
 //rutas para clientes
 Route::apiResource('clients', ClientController::class);
@@ -43,6 +40,7 @@ Route::prefix('driver')->group(function () {
     Route::get('{driver}', [DriverController::class, 'index']);
     Route::patch('destroys', [DriverController::class, 'destroys']);
 });
+
 
 //rutas para los distribuidores
 Route::apiResource('dealers', DealerController::class);

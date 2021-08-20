@@ -14,7 +14,7 @@ class CreateAppRolesTable extends Migration
     public function up()
     {
         Schema::connection(env('DB_CONNECTION_APP'))
-            ->create('roles', function (Blueprint $table) {
+            ->create('app.roles', function (Blueprint $table) {
                 $table->id();
                 $table->string('name')->comment('nombre de los roles');
                 $table->string('description')->nullable()->comment('descripcion del rol');
@@ -31,6 +31,6 @@ class CreateAppRolesTable extends Migration
      */
     public function down()
     {
-        Schema::connection(env('DB_CONNECTION_APP'))->dropIfExists('roles');
+        Schema::connection(env('DB_CONNECTION_APP'))->dropIfExists('app.roles');
     }
 }

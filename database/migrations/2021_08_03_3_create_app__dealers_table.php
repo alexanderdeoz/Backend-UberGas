@@ -13,7 +13,7 @@ class CreateAppDealersTable extends Migration
      */
     public function up()
     {
-        Schema::connection(env('DB_CONNECTION_APP'))->create('dealers', function (Blueprint $table) {
+        Schema::connection(env('DB_CONNECTION_APP'))->create('app.dealers', function (Blueprint $table) {
             $table->id();
             $table->text('name')->comment('Nombre de la distribuidora');
             $table->text('address')->comment('Dirección de la distribuidora');
@@ -33,6 +33,6 @@ class CreateAppDealersTable extends Migration
      */
     public function down()
     {
-        Schema::connection(env('DB_CONNECTION_APP'))->dropIfExists('dealers');
+        Schema::connection(env('DB_CONNECTION_APP'))->dropIfExists('app.dealers');
     }
 }

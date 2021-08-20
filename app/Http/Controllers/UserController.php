@@ -13,6 +13,14 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function __construct()
+  {
+    $this->middleware('role:admin, client, driver');
+        $this->middleware('permission:view-users')->only(['index','show']);
+        $this->middleware('permission:store-users')->only(['store']);
+        $this->middleware('permission:update-users')->only(['update']);
+        $this->middleware('permission:delete-users')->only(['destroy']);
+  }
     /**
      * Display a listing of the resource.
      *
@@ -37,7 +45,7 @@ class UserController extends Controller
         $users->birthdate = $request->input('birthdate');
         $users->email = $request->input('email');
         $users->email_verified_at = $request->input('email_verified_at');
-        $users->password_changed = $request->input('password_changed');
+        $users->password = $request->input('password');
         $users->save();
 
         return response()->json(

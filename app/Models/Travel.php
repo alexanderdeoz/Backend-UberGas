@@ -14,9 +14,9 @@ class Travel extends Model
     protected $table = 'app.travels';
     protected $fillable = [];
 
-    function clients()
+    function users()
     {
-        return $this->hasMany(Client::class);
+        return $this->belongsTo(User::class);
     }
     function drivers()
     {

@@ -13,7 +13,7 @@ class CreateAppProductsTable extends Migration
      */
     public function up()
     {
-        Schema::connection(env('DB_CONNECTION_APP'))->create('products', function (Blueprint $table) {
+        Schema::connection(env('DB_CONNECTION_APP'))->create('app.products', function (Blueprint $table) {
             $table->id();
             $table->foreignId('dealer_id')->constrained('app.dealers');
             $table->text('name')->comment('Nombre del producto gas domestico o gas industrial');
@@ -31,6 +31,6 @@ class CreateAppProductsTable extends Migration
      */
     public function down()
     {
-        Schema::connection(env('DB_CONNECTION_APP'))->dropIfExists('products');
+        Schema::connection(env('DB_CONNECTION_APP'))->dropIfExists('app.products');
     }
 }

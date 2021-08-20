@@ -14,12 +14,12 @@ class CreateAppTravelsTable extends Migration
     public function up()
     {
         Schema::connection(env('DB_CONNECTION_APP'))
-            ->create('travels', function (Blueprint $table) {
+            ->create('app.travels', function (Blueprint $table) {
                 $table->id();
-                $table->foreignId('driver_id')->constrained('app.drivers');
-                $table->foreignId('client_id')->constrained('app.clients');
+                $table->foreignId('user_id')->constrained('app.users');
+                $table->foreignId('driver_id')->constrained('app.drivers');              
                 $table->foreignId('order_id')->constrained('app.orders');
-                $table->foreignId('detail_order_id')->constrained('app.detailsOrders');
+                //$table->foreignId('detail_order_id')->constrained('app.detailsOrders');
                 $table->timestamps();
             });
     }
@@ -31,6 +31,6 @@ class CreateAppTravelsTable extends Migration
      */
     public function down()
     {
-        Schema::connection(env('DB_CONNECTION_APP'))->dropIfExists('travels');
+        Schema::connection(env('DB_CONNECTION_APP'))->dropIfExists('app.travels');
     }
 }

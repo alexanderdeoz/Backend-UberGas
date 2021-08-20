@@ -13,7 +13,7 @@ class CreateAppOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::connection(env('DB_CONNECTION_APP'))->create('orders', function (Blueprint $table) {
+        Schema::connection(env('DB_CONNECTION_APP'))->create('app.orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('app.users');
             //$table->foreignId('driver_id')->constrained('app.drivers');
@@ -34,6 +34,6 @@ class CreateAppOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::connection(env('DB_CONNECTION_APP'))->dropIfExists('orders');
+        Schema::connection(env('DB_CONNECTION_APP'))->dropIfExists('app.orders');
     }
 }
